@@ -42,7 +42,7 @@ public class AuthService {
         User savedUser = userRepository.save(newUser);
 
         String bearerToken = jwtUtil.createToken(savedUser.getId(), savedUser.getEmail(), userRole);
-
+        log.info("가입완료");
         return new SignupResponse(bearerToken);
     }
 
@@ -57,7 +57,7 @@ public class AuthService {
         }
 
         String bearerToken = jwtUtil.createToken(user.getId(), user.getEmail(), user.getUserRole());
-
+        log.info("로그인 완료");
         return new SigninResponse(bearerToken);
     }
 }
